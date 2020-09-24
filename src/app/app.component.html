@@ -1,0 +1,44 @@
+
+<style>
+.header-nav {
+  margin: auto;
+  /* overflow: auto; */
+  overflow: initial;
+  border-radius: 15px;
+  background: linear-gradient(345deg, #ff4a96, #ff6565, #ffcd61);
+  width: 70%;
+  padding-left: 15px;
+  padding: 0.02%;
+  box-shadow: 0 20px 50px rgba(29, 29, 29, 0.5);
+  margin-top: 30px;
+  display:block;
+}
+
+.auth{
+  text-align: right;
+  color:lightgoldenrodyellow;
+  padding-right: 10px;
+  display: block; 
+ 
+}
+
+.photo-logo {
+  width:120px;
+  height:120px;
+  text-align: left;
+  display: block; 
+  margin-top: -20px;
+  /* margin-left: 25%; */
+  position: fixed;
+}
+</style>
+
+<header>
+ <div class="header-nav"><img class = "photo-logo" src="assets\imgs\ico.png" alt="BPP-A"><h1 class="auth">Auth</h1></div>
+ 
+</header>
+
+
+
+
+<router-outlet></router-outlet>
