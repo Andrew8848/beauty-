@@ -1,0 +1,24 @@
+.block{
+    display: inline-block;
+    width: 200px;
+    height: 250px;
+    border-radius: 10%;
+    box-shadow: 0 20px 30px rgba(29, 29, 29, 0.5);
+    background: linear-gradient(345deg, #ff4a96, #ff6565, #ffcd61);
+    position: relative;
+    margin: 10px;
+    .content {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 180px;
+        height: 230px;
+        border-radius: 10%;
+        background-color: #FFFAF0;
+        margin: auto;
+     }
+ }
+ 
