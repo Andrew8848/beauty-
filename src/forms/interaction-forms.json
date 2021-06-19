@@ -1,0 +1,127 @@
+{
+    "name":{
+        "en": "Name",
+        "ru": "Название",
+        "uk": "Ім'я"
+    },
+    "brand":{
+        "en": "Brand",
+        "ru": "Бренд",
+        "uk": "Бренд"
+    },
+    "price":{
+        "en": "Price",
+        "ru": "Цена",
+        "uk": "Ціна"
+    },
+    "type":{
+        "en": "Type",
+        "ru": "Тип",
+        "uk": "Тип"
+    },
+    "volume":{
+        "en": "Volume",
+        "ru": "Объем",
+        "uk": "Гучність"
+    },
+    "age":{
+        "en": "Age",
+        "ru": "Возраст",
+        "uk": "Вік"
+    },
+    "description":{
+        "en": "Description",
+        "ru": "Описание",
+        "uk": "Опис"
+    },
+    "applying":{
+        "en": "applying",
+        "ru": "Применение",
+        "uk": "застосування"
+    },
+    "madeIn":{
+        "en": "Made in",
+        "ru": "Сделано в",
+        "uk": "Зроблено в"
+    },
+    "countryTM":{
+        "en": "Country TM",
+        "ru": "Страна TM",
+        "uk": "Країна TM"
+    },
+    "appointment":{
+        "en": "Appointment",
+        "ru": "Назначение",
+        "uk": "Призначення"
+    },
+    "applicationTime":{
+        "en": "Application time",
+        "ru": "Время применения",
+        "uk": "Час застосування"
+    },
+    "gender":{
+        "en": "Gender",
+        "ru": "Пол",
+        "uk": "Стать"
+    },
+    "classification":{
+        "en": "Classification",
+        "ru": "Классификация",
+        "uk": "Класифікація"
+    },
+    "createProduct":{
+        "en": "Create Product",
+        "ru": "Создать продукт",
+        "uk": "Створити продукт"
+    },
+    "back":{
+        "en": "Back",
+        "ru": "Назад",
+        "uk": "Назад"
+    },
+    "updateProduct":{
+        "en": "Update Product",
+        "ru": "Обновить продукт",
+        "uk": "Оновити продукт"
+    },
+    "deleteConfirm":{
+        "en": "Do you really want to delete?",
+        "ru": "Вы действительно хотите удалить?",
+        "uk": "Ви дійсно хочете видалити?"
+    },
+    "updateConfirm":{
+        "en": "Do you really want to change?",
+        "ru": "Вы действительно хотите изменить?",
+        "uk": "Ви дійсно хочете змінити?"
+    },
+    "no":{
+        "en": "No",
+        "ru": "Нет",
+        "uk": "Ні"
+    },
+    "yes":{
+        "en": "Yes",
+        "ru": "Да",
+        "uk": "Так"
+    }, 
+    "canceled":{
+        "en": "Canceled",
+        "ru": "Отменен",
+        "uk": "Скасовано"
+    },
+    "deleted":{
+        "en": "Deleted",
+        "ru": "Удалено",
+        "uk": "Видалено"
+    },
+    "updated":{
+        "en": "Updated",
+        "ru": "Обновлено",
+        "uk": "Оновлено"
+    },
+    "updating":{
+        "en": "Updating",
+        "ru": "Обновление",
+        "uk": "Оновлення"
+    }
+}

@@ -1,0 +1,5 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-actions >
+  <button mat-raised-button color="warn" [mat-dialog-close]="true" style="margin: auto;">{{labelForm.yes[data.lang]}}</button>
+  <button mat-button [mat-dialog-close]="false" style="margin: auto; float: right;">{{labelForm.no[data.lang]}}</button>
+</mat-dialog-actions>

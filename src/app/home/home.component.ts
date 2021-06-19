@@ -1,20 +1,28 @@
-import { Component, OnInit, ɵConsole } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { LanguageComponent } from '../language/language.component';
 import { Product, ProductService } from '../services/product.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogConfirmationComponent } from '../dialog-confirmation/dialog-confirmation.component';
+
+import form from "../../forms/interaction-forms.json";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-product-block',
-  templateUrl: './product-block.component.html',
-  styleUrls: ['./product-block.component.scss']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
-export class ProductBlockComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   private lastId = 0;
   private amountProductsOnPage = 12;
-  private subscription: Subscription;
   private pagesRange: number = 10
+
+  private snackBarDuration: number = 2000;
+
+  public labelForm = form;
 
   public maxPages: number = 0;
   public currentPage: number = 0;
@@ -27,11 +35,21 @@ export class ProductBlockComponent implements OnInit {
   public loading: boolean = false;
 
   private productsSubscription: Subscription;
+  private snackBarSubscription: Subscription;
 
-  constructor(private activatedRouter: ActivatedRoute, private router: Router, private productService: ProductService, private languageComponent: LanguageComponent) { 
+  constructor(
+      private languageComponent: LanguageComponent,
+      private dialog: MatDialog,
+      private snackBar: MatSnackBar,
+      private activatedRouter: ActivatedRoute,
+      private router: Router, 
+      private productService: ProductService
+              ) {}
+
+  public setLang(lang):void {
+    this.router.navigate([lang, 'home', this.currentPage]);
+    this.lang = lang;
   }
-
-
 
   private pageUpdate(){
     if(+this.maxPages > this.pagesRange){
@@ -62,13 +80,13 @@ export class ProductBlockComponent implements OnInit {
     }
 }
 
-  setPage(page: number): void{
+  public setPage(page: number): void{
     this.loading = true;
     this.currentPage = page;
     this.getProductByPage(this.currentPage);
   }
 
-  previous(): void{
+  public previous(): void{
     if(this.currentPage > 0){
       this.loading = true;
       this.currentPage--;
@@ -78,7 +96,7 @@ export class ProductBlockComponent implements OnInit {
     }
   }
 
-  next(): void{ 
+  public next(): void{ 
     if(+this.currentPage <= this.maxPages){
       this.loading = true;
       this.currentPage++;
@@ -86,15 +104,52 @@ export class ProductBlockComponent implements OnInit {
     }
   }
 
-  getProductByPage(page): void{
+  private openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: this.snackBarDuration,
+      panelClass: ['color-snackbar']
+    });
+  }
+
+  private delete(id){
+
+  }
+
+  public deleteDialog(idProduct: number): void{
+    const _productInfo = "[ID: " + this.productList[idProduct].id + "] " + this.productList[idProduct].brand;
+    let dialogRef = this.dialog.open(DialogConfirmationComponent, {
+      width: '300px',
+      data: {
+       lang: this.lang,
+       title: this.labelForm.deleteConfirm[this.lang]
+      }
+      });
+      if(this.snackBarSubscription){
+        this.snackBarSubscription.unsubscribe();
+      }
+      this.snackBarSubscription = dialogRef.afterClosed().subscribe(result => {
+        if (result === true) {
+          // let product: Observable<Product> = this.productList[idProduct];
+          console.log( );
+          this.openSnackBar(_productInfo + " " + this.labelForm.deleted[this.lang], "ОК");
+          this.productList.splice(idProduct, 1);
+        } else{
+          console.log("canceled!");
+          this.openSnackBar(this.labelForm.canceled[this.lang], "ОК");
+        }
+      });
+     
+  }
+
+  public getProductByPage(page): void{
     this.pageUpdate();
     this.productList = [];
     if(this.productsSubscription){
       this.productsSubscription.unsubscribe();
-    }
-    this.productsSubscription = this.productService.getProductsWithStartAndLastId((((this.amountProductsOnPage*page)-this.amountProductsOnPage)+1), (page*this.amountProductsOnPage)).subscribe((array: Array<Product>)=>{
+    }  
+    this.productsSubscription = this.productService.getProductByPages(page, this.amountProductsOnPage).subscribe((array: Array<Product>)=>{
       this.productList = array;
-      this.router.navigate(['/home', this.currentPage]);
+      this.router.navigate([this.languageComponent.lang, 'home', this.currentPage]);
       this.loading = false;
     });   
   }

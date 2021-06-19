@@ -1,0 +1,261 @@
+// header{
+//     box-shadow: 0 20px 0px rgba(29, 29, 29, 0.5);
+// }
+aside{
+  right: 20%;
+  top: 100px;
+  position: sticky;
+  float: right;
+  padding: 0px;
+  width: 60px;
+  display: block;
+  .language-switch{
+    box-shadow: 0 5px 15px rgba(29, 29, 29, 0.5);
+    border-radius: 100%;
+    outline: none;
+    margin: auto;
+    margin: 15px;
+    padding: 0px;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    display: block;
+  }
+}
+main{
+    $dark: #000;
+    $primary: #0077FF;
+
+    $border: 10px;
+
+    background-color:white;
+    position: relative; 
+    top: -50px;
+    margin: 0 auto;  
+    display: block;
+    width:50%;
+    box-sizing: border-box;
+    border-radius: 0px 0px 50px 50px;
+    background-clip: padding-box;
+    border: solid $border transparent;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: -1;
+        margin: -$border; 
+        border-radius: inherit; 
+        background: linear-gradient(325deg, #ff4a96, #ff6565, #ffcd61);
+      }
+    content{
+          display: block;
+          margin: auto;
+          width: 70%;
+          height:100%;
+          margin-top:60px;
+          z-index: 2;
+          position: relative;
+          .img-block{
+            margin:auto;
+            width:300px;
+            img{
+              display: block;
+              width:300px;
+              margin: 5px;
+            }
+            .img-source{
+              display: inline-block;
+              margin: 15px 0;
+            }
+            .input-multiple-image{
+              display: inline-block;
+              right: 2px;
+              position: relative;
+            
+            }
+        }
+      
+          ol{
+              position: relative;
+              margin: auto;
+              display: block;
+              left: 10px;
+            li{
+                display: inline-block;
+                position: relative;
+                margin: auto;
+                width: 100%;
+                padding: 10px;
+                label{
+                    position: absolute;
+                    font-family: Roboto;
+                    left: 12px;
+                    font-size: 16px;
+                    color: rgba($dark,.5);
+                    font-weight: 500;
+                    transform-origin: 0 0;
+                    transform: translate3d(0,0,0);
+                    transition: all .2s ease;
+                    pointer-events: none;
+                }
+                .text-field {
+                    -webkit-appearance: none;
+                    background-color: rgba($color: #000000, $alpha: 0.0);
+                    appearance: none;
+                    width: 76%;
+                    border: 0;
+                    font-family: inherit;
+                    padding: 16px 12px 0 12px;
+                    height: 35px;
+                    font-size: 16px;
+                    font-weight: 400;
+                    box-shadow: inset 0 -1px 0 rgba($dark,.3);
+                    color: #000;
+                    transition: all .15s ease;
+                    display: inline;
+
+                  &:focus{
+                    outline: none;
+                    box-shadow: inset 0 -2px 0 $primary;
+                    color: $primary;
+                }
+            }
+
+            .input-delete{
+              margin-left: 10px;
+              position: relative;
+            }
+            
+            textarea{
+                -webkit-appearance: none;
+                background-color: rgba($color: #000000, $alpha: 0.0);
+                appearance: none;
+                width: 76%;
+                border: 0;
+                font-family: inherit;
+                padding: 16px 12px 0 12px;
+                height: 35px;
+                margin-top: 16px;
+                font-size: 16px;
+                font-weight: 400;
+                box-shadow: inset 0 -1px 0 rgba($dark,.3);
+                color: #000;
+                transition: all .15s ease;
+                min-height: 40px;
+                resize: vertical;
+                &:focus{
+                    outline: none;
+                    box-shadow: inset 0 -2px 0 $primary;
+                    color: $primary;
+                }
+            }
+            .input-multiple{
+              margin-left: 10px;
+            }
+        }
+        
+    } 
+  .bottom-content{
+    display: inline-block;
+    position: relative;
+    width: 140%;
+    right: 20%;
+    text-align: center;
+
+    .price-label{
+        display: inline-block;
+        margin-left: 0px;
+        position: relative;
+        font-family: Roboto;
+        font-size: 16px;
+        color: rgba($dark,.5);
+        font-weight: 500;
+        transform-origin: 0 0;
+        transform: translate3d(0,0,0);
+        transition: all .2s ease;
+        pointer-events: none;
+
+    }
+    .price-input{
+        position: static;
+        margin-right: 2%;
+        margin-top: 1%;
+        -webkit-appearance: none;
+        background-color: rgba($color: #000000, $alpha: 0.0);
+        appearance: none;
+        width: 10%;
+        border: 0;
+        font-family: inherit;
+        padding: 16px 12px 0 12px;
+        height: 35px;
+        font-size: 16px;
+        font-weight: 400;
+        box-shadow: inset 0 -1px 0 rgba($dark,.3);
+        color: #000;
+        transition: all .15s ease;
+
+      &:focus{
+        outline: none;
+        box-shadow: inset 0 -2px 0 $primary;
+      }
+
+ }
+
+ .symbol-of-currency{
+    font-family: Roboto;
+    margin-right: 10%;
+    font-size: 16px;
+    color: rgba($dark,.5);
+    font-weight: 500;
+    transform-origin: 0 0;
+    transform: translate3d(0,0,0);
+    transition: all .2s ease;
+    pointer-events: none;
+ }
+
+    .setProduct{
+        border:none;
+        position: relative;
+        outline: none;
+        padding: 10px;
+        margin: 15px;
+        display: inline-block;
+        color: white;  
+        font-weight: bold;
+        font-family: Calibri;
+        font-size: 120%;
+        background: #70aa40;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px rgba(29, 29, 29, 0.5);
+        transition: 0.1s;
+        &:active{
+            transform: scale(0.9)
+        }
+    }
+   }
+  }
+ }
+      nav{
+        display:block;
+        right:0;	
+        position: fixed;
+        width:15%;
+         #to-home{
+           margin: 20px;
+           border-radius: 100%;
+           background: linear-gradient(345deg, #ff4a96, #ff6565, #ffcd61);
+           box-shadow: 0 20px 50px rgba(29, 29, 29, 0.5);
+           padding: 20px;
+           color:aliceblue;
+           text-decoration: none;
+           font-size: 26px;
+           transition: 0.1s;
+          }
+        #to-home:hover{
+          transform: scale(1.2)
+        }
+        #to-home:active{
+          transform: scale(1)
+        }
+     }
+   

@@ -1,0 +1,48 @@
+  <nav>
+    <a id="add-product" class="fa fa-plus" aria-hidden="true" routerLink="../../add-product" routerLinkActive="active"></a>
+    <div class="lang">
+      <input class = "language-switch" type="image" src="assets\imgs\united-states.svg" (click) = "setLang('en')" [ngStyle] = "{'transform': lang === 'en' ? 'scale(' + 1.3 + ')' : ''}">
+      <input class = "language-switch" type="image" src="assets\imgs\russia.svg" (click) = "setLang('ru')" [ngStyle] = "{'transform': lang === 'ru' ? 'scale(' + 1.3 + ')' : ''}">
+      <input class = "language-switch" type="image" src="assets\imgs\ukraine.svg" (click) = "setLang('uk')" [ngStyle] = "{'transform': lang === 'uk' ? 'scale(' + 1.3 + ')' : ''}">
+    </div>
+  </nav>
+
+  <main>
+    <div class="loading" *ngIf="loading == true">Loading...</div>
+
+
+
+    <div class="list" *ngIf="loading == false">
+      <div class = "block" *ngFor = "let p of productList; let i = index">
+        <div class = "content">
+          <img class = "img-wrap" src="{{productList[i].base64[0]}}">
+          <div class = "info-content">
+            <h3 class = "age">{{productList[i].age}}</h3>
+            <h3 class = "gender">{{productList[i].gender[lang]}}</h3>
+            <h3 class = "name">{{productList[i].name[lang]}}</h3>
+            <h3 class = "brand">{{labelForm.brand[lang]}}: {{productList[i].brand}}</h3>
+            <h3 class = "price">€{{productList[i].price.EUR}}</h3>
+            <div class = buttons>
+              <button id="delete" class="fa fa-trash" aria-hidden="true" (click)="deleteDialog(i)" routerLinkActive="active"></button>
+              <button id="edit" class="fa fa-pencil-square-o" aria-hidden="true" routerLink="../../edit-product/{{productList[i].id}}" routerLinkActive="active"></button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  <footer>
+    <div class="page-selector" >
+      <input type="button" class="previous" value="<" (click) = "previous()" *ngIf="1 < currentPage">
+      <input type="button" class="previous" value="<" (click) = "previous()" *ngIf="1 == currentPage" disabled>
+      <div class = "pages-block" *ngFor="let p of pages">
+        <button class = "unselected-pages" aria-hidden="true" (click)="setPage(p)" *ngIf="currentPage != p">{{p}}</button>
+        <button class = "selected-pages" aria-hidden="true" (click)="setPage(p)" *ngIf="currentPage == p">{{p}}</button>
+      </div>
+      <input type="button" class="next" value=">" (click) = "next()" *ngIf="maxPages > currentPage">
+      <input type="button" class="next" value=">" (click) = "next()" *ngIf="maxPages <= currentPage" disabled>
+
+    </div>
+  </footer>

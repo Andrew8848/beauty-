@@ -1,0 +1,89 @@
+<nav> 
+   <a id="to-home" class="fa fa-times" aria-hidden="true" routerLink="../home/1" routerLinkActive="active"></a>
+</nav>
+<aside>
+    <input class = "language-switch" type="image" src="assets\imgs\united-states.svg" (click) = "setLang('en')" [ngStyle] = "{'transform': lang === 'en' ? 'scale(' + 1.3 + ')' : ''}">
+    <input class = "language-switch" type="image" src="assets\imgs\russia.svg" (click) = "setLang('ru')" [ngStyle] = "{'transform': lang === 'ru' ? 'scale(' + 1.3 + ')' : ''}">
+    <input class = "language-switch" type="image" src="assets\imgs\ukraine.svg" (click) = "setLang('uk')" [ngStyle] = "{'transform': lang === 'uk' ? 'scale(' + 1.3 + ')' : ''}">
+</aside>
+<main>   
+  <content>
+      <div class="img-block"> 
+      <div class = "img-source" name="product_pic" *ngFor="let c of base64Length; let i = index">
+         <img src = "{{product.base64[c]}}">
+         <input type = "file" (change) = "uploadFile($event, c)">
+         <input type="button" class="input-multiple-image" name="multiple-input" value="+"  (click) = "addImages()" *ngIf="i == (base64Length.length - 1)">
+         <input type="button" class="input-delete" value="-" (click) = "deleteImagesById(i)" *ngIf="base64Length.length > 1">
+      </div>
+    </div>
+     <ol>
+        <li> 
+            <label>{{labelform.name[lang]}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.name[lang]">
+        </li>
+        <li> 
+            <label>{{labelform.brand[lang]}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.brand">
+        </li>
+        <li *ngFor="let c of volumeLength; let i = index"> 
+            <label>{{labelform.volume[lang]}} {{i+1}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.volume[c]">
+            <input type="button" class="input-multiple"  value="+"  (click) = "addVolume()" *ngIf="i == (volumeLength.length - 1)">
+            <input type="button" class="input-delete" value="-" (click) = "deleteVolumeById(i)" *ngIf="volumeLength.length > 1">
+        </li>
+        
+        <li *ngFor="let c of typeLength; let i = index"> 
+            <label>{{labelform.type[lang]}} {{i+1}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.type[c]">
+            <input type="button" class="input-multiple"  value="+"  (click) = "addType()" *ngIf="i == (typeLength.length - 1)">
+            <input type="button" class="input-delete" value="-" (click)="deleteTypeById(i)" *ngIf="typeLength.length > 1">
+        </li>
+        
+        <li> 
+            <label>{{labelform.age[lang]}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.age">
+        </li>
+        <li> 
+            <label>{{labelform.applying[lang]}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.applying[lang]">
+        </li>
+        <li> 
+            <label>{{labelform.gender[lang]}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.gender[lang]">
+        </li>
+        <li> 
+            <label>{{labelform.appointment[lang]}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.appointment[lang]">
+        </li>
+        <li> 
+            <label>{{labelform.applicationTime[lang]}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.applicationTime[lang]">
+        </li>
+        <li> 
+            <label>{{labelform.classification[lang]}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.classification[lang]">
+        </li>
+        <li> 
+            <label>{{labelform.description[lang]}}: </label>
+            <textarea rows="5"  [(ngModel)]="product.description[lang]"></textarea> 
+        </li>
+        <li> 
+            <label>{{labelform.countryTM[lang]}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.countryTM[lang]">
+        </li>
+        <li> 
+            <label>{{labelform.madeIn[lang]}}: </label>
+            <input type="text" class = "text-field" [(ngModel)]="product.madeIn[lang]">
+        </li>
+    </ol>
+    <div class="bottom-content">
+      
+        <label class="price-label">{{labelform.price[lang]}}:</label>
+        <input type="text" class="price-input" [(ngModel)]="product.price.EUR">
+        <label class="symbol-of-currency">€</label>
+        <input class="setProduct" type="button" value="{{labelform.createProduct.en}}" (click)="addProduct()">
+      
+    </div>
+  </content>
+</main>
+

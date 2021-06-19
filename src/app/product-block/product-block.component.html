@@ -1,25 +1,37 @@
-<div class = "block">
-<div class = "content">
+<div class="loading" *ngIf="loading == true">Loading...</div>
 
-</div>
-</div>
-<div class = "block">
+
+
+<div class="list" *ngIf="loading == false">
+  <div class = "block" *ngFor = "let p of productList; let i = index">
     <div class = "content">
-    
-    </div>
-    </div>
-    <div class = "block">
-        <div class = "content">
+      <img class = "img-wrap" src="{{productList[i].base64[0]}}">
+      <div class = "info-content">
+        <h3 class = "age">{{productList[i].age}}</h3>
+        <h3 class = "gender">{{productList[i].gender[lang]}}</h3>
+        <h3 class = "name">{{productList[i].name[lang]}}</h3>
+        <h3 class = "brand">Brand: {{productList[i].brand}}</h3>
+        <h3 class = "price">€{{productList[i].price.EUR}}</h3>
+        <div class = buttons>
+          <a id="edit" class="fa fa-pencil-square-o" aria-hidden="true" routerLink="../../edit-product/{{i+1}}" routerLinkActive="active"></a>
+        </div>
         
-        </div>
-        </div>
-        <div class = "block">
-            <div class = "content">
-            
-            </div>
-            </div>
-            <div class = "block">
-            <div class = "content">
-            
-            </div>
-            </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+<footer>
+  <div class="page-selector" >
+    <input type="button" class="previous" value="<" (click) = "previous()" *ngIf="1 < currentPage">
+    <input type="button" class="previous" value="<" (click) = "previous()" *ngIf="1 == currentPage" disabled>
+    <div class = "pages-block" *ngFor="let p of pages">
+      <a class = "unselected-pages" aria-hidden="true" (click)="setPage(p)" *ngIf="currentPage != p">{{p}}</a>
+      <a class = "selected-pages" aria-hidden="true" (click)="setPage(p)" *ngIf="currentPage == p">{{p}}</a>
+    </div>
+    <input type="button" class="next" value=">" (click) = "next()" *ngIf="maxPages > currentPage">
+    <input type="button" class="next" value=">" (click) = "next()" *ngIf="maxPages <= currentPage" disabled>
+
+  </div>
+</footer>
